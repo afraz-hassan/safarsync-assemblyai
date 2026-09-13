@@ -1,0 +1,6 @@
+{
+  "name": "SafarSync AI - Voice Edition",
+  "description": "Intelligent vehicle expense and predictive maintenance tracker powered by AssemblyAI voice transcription and Gemini tool calling.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
