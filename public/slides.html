@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafarSync AI — Hackathon Pitch Deck & Slides Presentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #030712;
+      color: #f3f4f6;
+      overflow: hidden;
+    }
+    .slide {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+    }
+    .slide.active {
+      display: flex;
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+<body class="selection:bg-purple-600 selection:text-white">
+
+  <!-- Top Navigation & Controls Bar -->
+  <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/80">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-purple-500/30">
+        <i class="fa-solid fa-truck-fast text-xs"></i>
+      </div>
+      <div>
+        <span class="font-extrabold text-white text-sm tracking-tight">SafarSync AI</span>
+        <span class="ml-2 text-xs font-semibold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">Pitch Deck</span>
+      </div>
+    </div>
+
+    <!-- Slide Thumbnails / Indicator -->
+    <div class="flex items-center gap-2">
+      <span id="slideIndicator" class="font-mono text-xs text-slate-400 font-bold mr-3">Slide 1 of 8</span>
+      <button onclick="prevSlide()" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 flex items-center justify-center transition-all cursor-pointer" title="Previous Slide (Left Arrow)">
+        <i class="fa-solid fa-chevron-left text-xs"></i>
+      </button>
+      <button onclick="nextSlide()" class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 flex items-center justify-center transition-all cursor-pointer" title="Next Slide (Right Arrow or Space)">
+        <i class="fa-solid fa-chevron-right text-xs"></i>
+      </button>
+      <button onclick="toggleFullscreen()" class="w-9 h-9 rounded-xl bg-purple-600/20 border border-purple-500/30 text-purple-300 hover:bg-purple-600 hover:text-white flex items-center justify-center transition-all cursor-pointer ml-2" title="Toggle Fullscreen (F)">
+        <i class="fa-solid fa-expand text-xs"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Slides Container -->
+  <main class="h-screen w-screen flex items-center justify-center pt-16">
+
+    <!-- SLIDE 1: Title & Hero -->
+    <div class="slide active flex-col justify-center px-6 sm:px-16 lg:px-24 max-w-7xl mx-auto w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-bold tracking-wide uppercase">
+            <i class="fa-solid fa-microphone-lines animate-pulse text-purple-400"></i>
+            AssemblyAI Voice Agent Hackathon Submission
+          </div>
+          <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight leading-none">
+            SafarSync <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-300 to-cyan-400">AI</span>
+          </h1>
+          <p class="text-lg sm:text-xl text-slate-300 font-medium leading-relaxed">
+            The ultimate voice-first fleet intelligence platform. Transforming unconstrained truck cabin speech into validated, structured fleet telematics without a single keystroke.
+          </p>
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <div class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 font-medium flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+              <strong>Ears:</strong> AssemblyAI Universal-3
+            </div>
+            <div class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 font-medium flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+              <strong>Brain:</strong> Gemini 1.5 Flash Reasoning
+            </div>
+            <div class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 font-medium flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <strong>Stack:</strong> React 18, TypeScript, Recharts
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="relative rounded-2xl overflow-hidden border border-purple-500/30 shadow-2xl shadow-purple-950/80 group">
+            <img src="/safarsync_banner.jpg" alt="SafarSync AI Banner" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex items-end p-6">
+              <span class="text-xs text-slate-300 font-mono">Real-Time Cabin Audio Processing Pipeline</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: The Problem -->
+    <div class="slide flex-col justify-center px-6 sm:px-16 lg:px-24 max-w-7xl mx-auto w-full">
+      <div class="space-y-6">
+        <span class="text-xs font-bold text-rose-400 uppercase tracking-widest px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20">
+          The Problem
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+          Distracted Driving &amp; A $12B Paperwork Crisis
+        </h2>
+        <p class="text-slate-300 text-base max-w-3xl leading-relaxed">
+          Commercial truck drivers and independent owner-operators are forced to choose between road safety and manual bookkeeping. Current software forces drivers to type logs onto tiny smartphone touchscreens inside moving truck cabins.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+          <div class="bg-rose-950/20 border border-rose-500/30 rounded-2xl p-6 relative overflow-hidden">
+            <div class="w-12 h-12 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Severe Road Hazard</h3>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              Texting or manually typing mileage and fuel logs behind the wheel increases crash risk by <strong>23 times</strong>.
+            </p>
+            <div class="text-rose-400 font-mono font-bold text-sm">23x higher crash risk</div>
+          </div>
+
+          <div class="bg-amber-950/20 border border-amber-500/30 rounded-2xl p-6 relative overflow-hidden">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-receipt"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Lost Fuel &amp; Tax Write-Offs</h3>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              Paper receipts fade, get lost, or are forgotten by weekend tallying. Average loss of over $12,000 per truck annually in tax credits.
+            </p>
+            <div class="text-amber-400 font-mono font-bold text-sm">$12,000+ lost per truck/yr</div>
+          </div>
+
+          <div class="bg-blue-950/20 border border-blue-500/30 rounded-2xl p-6 relative overflow-hidden">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-wrench"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Delayed Maintenance</h3>
+            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              Without accurate continuous mileage logs, oil changes, brake pads, and tire rotations are missed until roadside breakdown occurs.
+            </p>
+            <div class="text-blue-400 font-mono font-bold text-sm">$4,800 avg engine repair</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: The Solution -->
+    <div class="slide flex-col justify-center px-6 sm:px-16 lg:px-24 max-w-7xl mx-auto w-full">
+      <div class="space-y-6">
+        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+          The Solution
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+          SafarSync AI: 100% Hands-Free Telematics
+        </h2>
+        <p class="text-slate-300 text-base max-w-3xl leading-relaxed">
+          Drivers simply speak naturally into their phone or truck dashboard. The app captures live voice, parses numbers and units, and updates operational databases in real time.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-purple-500/40 transition-colors">
+            <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-microphone"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Speak Natural Language</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              "Filled up 50 gallons diesel for $180 at Shell on I-80." Zero rigid syntax or button clicks required.
+            </p>
+          </div>
+
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-indigo-500/40 transition-colors">
+            <div class="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Instant Structured Extraction</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Deterministic parsing extracts Category, Volume, Unit Price, Total Cost, Vehicle ID, and Odometer timestamp.
+            </p>
+          </div>
+
+          <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/40 transition-colors">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Live Metrics &amp; Telemetry</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Real-time calculation of Cost per Kilometer, Fuel Efficiency (km/L), and Automated Maintenance Health Bars.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Architecture -->
+    <div class="slide flex-col justify-center px-6 sm:px-16 lg:px-24 max-w-7xl mx-auto w-full">
+      <div class="space-y-6">
+        <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20">
+          Engineering &amp; Architecture
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+          Dual-Agent Voice-to-SQL Pipeline
+        </h2>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+            
+            <div class="bg-purple-950/40 border border-purple-500/40 rounded-xl p-5 text-center">
+              <div class="w-12 h-12 mx-auto rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-3">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+              <div class="text-sm font-bold text-white">1. Live Cabin Audio</div>
+              <div class="text-[11px] text-purple-300 mt-1 italic">
+                Noisy truck interior (75dB highway hum)
+              </div>
+            </div>
+
+            <div class="text-center hidden md:block">
+              <i class="fa-solid fa-arrow-right text-purple-400 text-xl animate-pulse"></i>
+              <div class="text-[10px] text-slate-500 font-mono mt-1">Audio Buffer</div>
+            </div>
+
+            <div class="bg-indigo-950/40 border border-indigo-500/40 rounded-xl p-5 text-center">
+              <div class="w-12 h-12 mx-auto rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl mb-3">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <div class="text-sm font-bold text-white">2. AssemblyAI STT</div>
+              <div class="text-[11px] text-indigo-300 mt-1">
+                Universal-3 acoustic models transcribe speech with ultra-low WER
+              </div>
+            </div>
+
+            <div class="bg-emerald-950/40 border border-emerald-500/40 rounded-xl p-5 text-center">
+              <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mb-3">
+                <i class="fa-solid fa-database"></i>
+              </div>
+              <div class="text-sm font-bold text-white">3. Gemini 1.5 Flash</div>
+              <div class="text-[11px] text-emerald-300 mt-1">
+                Deterministic schema reasoning &amp; strict JSON extraction
+              </div>
+            </div>
+
+          </div>
+
+          <div class="mt-8 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs">
+            <div class="flex items-center gap-2 text-slate-300">
+              <i class="fa-solid fa-shield-halved text-emerald-400"></i>
+              <span><strong>Guardrails:</strong> Prevents negative cost injections, NaN anomalies, and invalid date strings</span>
+            </div>
+            <div class="text-purple-400 font-mono font-bold">
+              Latency: &lt; 1.4s End-to-End Execution
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Product Features -->
+    <div class="slide flex-col justify-center px-6 sm:px-16 lg:px-24 max-w-7xl mx-auto w-full">
+      <div class="space-y-6">
+        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20">
+          Core Features
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+          Engineered for Real-World Fleets
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-2">
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+            <div class="w-10 h-10 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-lg mb-3">
+              <i class="fa-solid fa-wave-square"></i>
+            </div>
+            <h4 class="text-sm font-bold text-white mb-1">Reactive Audio Waveform</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Real-time Web Audio API visualizer reacts to voice amplitude for immediate driver feedback.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+            <div class="w-10 h-10 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-lg mb-3">
+              <i class="fa-solid fa-chart-pie"></i>
+            </div>
+            <h4 class="text-sm font-bold text-white mb-1">Telemetry Dashboard</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Recharts graphs track fuel efficiency, spending trends, and cost-per-km dynamics.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+            <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg mb-3">
+              <i class="fa-solid fa-table-list"></i>
+            </div>
+            <h4 class="text-sm font-bold text-white mb-1">SQLite-Style Logbook</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Full-text searchable table with filters across vehicles, dates, and one-click CSV export.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+            <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg mb-3">
+              <i class="fa-solid fa-bell"></i>
+            </div>
+            <h4 class="text-sm font-bold text-white mb-1">Predictive Service Alerts</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Dynamically calculates oil change and brake pad life based on logged odometer thresholds.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Market Opportunity -->
+    <div class="slide flex-col justify-center px-6 sm:px-16 lg:px-24 max-w-7xl mx-auto w-full">
+      <div class="space-y-6">
+        <span class="text-xs font-bold text-blue-400 uppercase tracking-widest px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">
+          Market Opportunity
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+          A $45 Billion Underserved Market
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+          <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 text-center">
+            <div class="text-4xl sm:text-5xl font-black text-purple-400 mb-2">$45.8B</div>
+            <div class="text-sm font-bold text-white">Global Telematics TAM</div>
+            <div class="text-xs text-slate-400 mt-1">Expanding at 16.5% CAGR through 2030</div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 text-center">
+            <div class="text-4xl sm:text-5xl font-black text-blue-400 mb-2">91%</div>
+            <div class="text-sm font-bold text-white">Small Fleets (&lt; 6 Trucks)</div>
+            <div class="text-xs text-slate-400 mt-1">Currently priced out of bloated enterprise ERPs</div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 text-center">
+            <div class="text-4xl sm:text-5xl font-black text-emerald-400 mb-2">4.2x</div>
+            <div class="text-sm font-bold text-white">Direct Owner ROI</div>
+            <div class="text-xs text-slate-400 mt-1">In recovered fuel tax rebates &amp; breakdown prevention</div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-purple-950/20 border border-purple-500/20">
+          <h4 class="text-base font-bold text-white mb-2">Target Audience</h4>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+            Independent owner-operators, last-mile delivery vans (Amazon DSPs, Couriers), regional logistics fleets, and field service contractors who cannot afford $3,000 hardware installations.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Business Model -->
+    <div class="slide flex-col justify-center px-6 sm:px-16 lg:px-24 max-w-7xl mx-auto w-full">
+      <div class="space-y-6">
+        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+          Monetization &amp; Traction
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+          SaaS Tiers &amp; Insurtech Flywheel
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Starter Tier</div>
+              <div class="text-3xl font-black text-white mb-3">Free</div>
+              <ul class="text-xs text-slate-400 space-y-2 mb-6">
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> 1 Registered Vehicle</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> 50 Voice Logs / Month</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Local Data Persistence</li>
+              </ul>
+            </div>
+            <div class="text-slate-500 text-xs">For solo gig &amp; ride-share drivers</div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-purple-950/30 border border-purple-500/40 flex flex-col justify-between shadow-xl shadow-purple-950/40 relative">
+            <span class="absolute top-4 right-4 px-2 py-0.5 rounded-full bg-purple-500/30 text-purple-300 text-[10px] font-bold">Recommended</span>
+            <div>
+              <div class="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">Pro Operator</div>
+              <div class="text-3xl font-black text-white mb-3">$14.99 <span class="text-xs font-normal text-slate-400">/ veh / mo</span></div>
+              <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Unlimited Voice Logging</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Full Telemetry &amp; CSV Export</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Predictive Service Reminders</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Multi-Vehicle Sync</li>
+              </ul>
+            </div>
+            <div class="text-purple-300 text-xs font-medium">Independent truckers &amp; small fleets</div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Fleet Enterprise</div>
+              <div class="text-3xl font-black text-white mb-3">$29.99 <span class="text-xs font-normal text-slate-400">/ veh / mo</span></div>
+              <ul class="text-xs text-slate-400 space-y-2 mb-6">
+                <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Dispatcher Central Portal</li>
+                <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Automated Fuel Card Reconciliation</li>
+                <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Insurtech Safety Score Telemetry</li>
+                <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Dedicated API Access</li>
+              </ul>
+            </div>
+            <div class="text-slate-500 text-xs">Mid-to-large commercial carriers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Why SafarSync Wins -->
+    <div class="slide flex-col justify-center px-6 sm:px-16 lg:px-24 max-w-7xl mx-auto w-full">
+      <div class="space-y-6">
+        <span class="text-xs font-bold text-amber-400 uppercase tracking-widest px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20">
+          The Hackathon Benchmark
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+          Why SafarSync AI Wins
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800">
+            <div class="text-purple-400 font-bold text-sm mb-1">1. Voice AI as Core Pillar, Not a Gimmick</div>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              We did not build a generic chat assistant. Voice is deployed strictly where hands-on keyboard typing is life-threatening and illegal.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800">
+            <div class="text-blue-400 font-bold text-sm mb-1">2. Production-Grade Polish</div>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Fully interactive live audio waveform, robust SQLite logbook, Recharts telemetry, clean-slate onboarding, and responsive PWA layout.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800">
+            <div class="text-emerald-400 font-bold text-sm mb-1">3. Clear Commercial Viability</div>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Addresses a quantifiable $12,000/truck annual pain point with immediate 4.2x ROI for fleet owners and drivers.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800">
+            <div class="text-amber-400 font-bold text-sm mb-1">4. Unmatched Acoustic Feat with AssemblyAI</div>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Proves AssemblyAI Universal-3's speech recognition resilience under hostile automotive and truck-cabin acoustic conditions.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-slate-800">
+          <div class="text-xs text-slate-400">
+            Built with ❤️ for the <strong>AssemblyAI Voice Agent Hackathon</strong>
+          </div>
+          <div class="text-xs font-mono text-purple-400">
+            Ready for Live Judging &amp; Prototype Demo
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Slide Footer / Keyboard hint -->
+  <footer class="fixed bottom-0 left-0 right-0 py-3 px-6 bg-slate-950/80 backdrop-blur-md border-t border-slate-800/60 flex items-center justify-between text-[11px] text-slate-500">
+    <div>
+      Tip: Press <kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">←</kbd> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">→</kbd> or <kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">Space</kbd> to navigate slides. Press <kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">F</kbd> for fullscreen.
+    </div>
+    <div class="font-mono text-purple-400">
+      SafarSync AI
+    </div>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const indicator = document.getElementById('slideIndicator');
+    let currentIndex = 0;
+
+    function updateSlide(index) {
+      if (index < 0 || index >= slides.length) return;
+      slides[currentIndex].classList.remove('active');
+      currentIndex = index;
+      slides[currentIndex].classList.add('active');
+      indicator.textContent = `Slide ${currentIndex + 1} of ${slides.length}`;
+    }
+
+    function nextSlide() {
+      if (currentIndex < slides.length - 1) {
+        updateSlide(currentIndex + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentIndex > 0) {
+        updateSlide(currentIndex - 1);
+      }
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullscreen();
+      } else if (e.key === 'Home') {
+        updateSlide(0);
+      } else if (e.key === 'End') {
+        updateSlide(slides.length - 1);
+      }
+    });
+  </script>
+</body>
+</html>
