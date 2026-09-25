@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./src/assets/images/safarsync_banner_1789292704717.jpg" alt="SafarSync AI Banner" width="100%" style="border-radius: 12px; margin-bottom: 20px;" />
+  <img src="./public/safarsync_banner.jpg" alt="SafarSync AI Banner" width="100%" style="border-radius: 12px; margin-bottom: 20px;" />
 
   # SafarSync AI 🚛🎙️
   

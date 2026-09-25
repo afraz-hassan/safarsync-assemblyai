@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Car, Mic, Table as TableIcon, Sparkles, LayoutDashboard, Radio, User, Edit3 } from 'lucide-react';
+import { Car, Mic, Table as TableIcon, Sparkles, LayoutDashboard, Radio, User, Edit3, Award } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { AppProvider, useAppContext } from './context/AppContext';
 import { DataEntry } from './components/DataEntry';
@@ -7,12 +7,14 @@ import { Dashboard } from './components/Dashboard';
 import { Logbook } from './components/Logbook';
 import { ProfileView } from './components/ProfileView';
 import { OnboardingModal } from './components/OnboardingModal';
+import { PresentationView } from './components/PresentationView';
 
 function MainLayout() {
-  const [activeTab, setActiveTab] = useState<'data' | 'dashboard' | 'logbook' | 'profile'>('data');
+  const [activeTab, setActiveTab] = useState<'data' | 'dashboard' | 'logbook' | 'profile' | 'presentation'>('presentation');
   const { userProfile, setIsOnboardingOpen, vehicles } = useAppContext();
 
   const navItems = [
+    { id: 'presentation', label: 'Presentation & Pitch', shortLabel: 'Pitch Deck', icon: Award },
     { id: 'data', label: 'Data Entry', shortLabel: 'Voice & Log', icon: Mic },
     { id: 'dashboard', label: 'Dashboard', shortLabel: 'Dashboard', icon: LayoutDashboard },
     { id: 'logbook', label: 'SQLite Logbook', shortLabel: 'Logbook', icon: TableIcon },
@@ -171,6 +173,11 @@ function MainLayout() {
       <main className="flex-1 overflow-y-auto relative z-10 custom-scrollbar">
         <div className="p-4 sm:p-6 lg:p-10 pb-28 lg:pb-10 min-h-full max-w-7xl mx-auto">
           <AnimatePresence mode="wait">
+            {activeTab === 'presentation' && (
+              <motion.div key="presentation" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+                <PresentationView onNavigate={(tab) => setActiveTab(tab)} />
+              </motion.div>
+            )}
             {activeTab === 'data' && (
               <motion.div key="data" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
                 <DataEntry onNavigate={(tab) => setActiveTab(tab)} />
